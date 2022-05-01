@@ -31,11 +31,12 @@ export default {
     },
   },
   actions: {
-    async fetchStarshipsList({ state, commit }) {
+    async fetchStarshipsList({ state, commit }, url) {
       commit('updateIsLoading', true)
       const search = state.searchText ? `?search=${state.searchText}` : ''
+      const fetchUrl = url ? url : `https://swapi.dev/api/starships/${search}`
       const res = await apiFetch(
-        `https://swapi.dev/api/starships/${search}`
+        fetchUrl
       )
       if (!res.ok) {
         commit('updateIsLoading', false)

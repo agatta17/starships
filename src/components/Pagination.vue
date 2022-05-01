@@ -1,18 +1,14 @@
 <template>
   <div class="pagination">
-    <a
-      class="pagination__button"
-    >
+    <a class="pagination__button" 
+      :class="{'pagination__button_disable': !previousPageUrl}"
+      @click="fetchStarshipsList(previousPageUrl, pageNumber--)">
       <div class="pagination__arrow pagination__arrow_left"></div>
     </a>
-    <div
-      class="pagination__page-number"
-    >
-      1
-    </div>
-    <a
-      class="pagination__button"
-    >
+    <div class="pagination__page-number">{{pageNumber}}</div>
+    <a class="pagination__button" 
+      :class="{'pagination__button_disable': !nextPageUrl}"
+      @click="fetchStarshipsList(nextPageUrl, pageNumber++)">
       <div class="pagination__arrow pagination__arrow_right"></div>
     </a>
   </div>
@@ -22,6 +18,24 @@
 <script>
 export default {
   name: 'Pagination',
+  data() {
+    return {
+      pageNumber: 1,
+    }
+  },
+  computed: {
+    nextPageUrl() {
+      return this.$store.state.starships.nextPageUrl;
+    },
+    previousPageUrl() {
+      return this.$store.state.starships.previousPageUrl;
+    }
+  },
+  methods: {
+    fetchStarshipsList(url) {
+      this.$store.dispatch('fetchStarshipsList', url)
+    },
+  }
 }
 </script>
 
