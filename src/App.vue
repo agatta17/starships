@@ -12,13 +12,40 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.container {
+  width: 520px;
+  margin: 0 auto;
+}
+
+[data-tooltip] {
+  position: relative;
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    opacity: 0;
+    transition: .3s;
+    pointer-events: none;
+    width: 300px;
+    left: 0; 
+    top: 100%;
+    background: #FFF;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 8px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
 }
 </style>
