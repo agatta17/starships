@@ -13,14 +13,19 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   color: #2c3e50;
 }
 
 .container {
-  width: 520px;
+  max-width: 520px;
   margin: 0 auto;
+  padding: 15px;
 }
 
 [data-tooltip] {
@@ -42,6 +47,12 @@ export default {
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 1;
+
+    @media (max-width: 520px) {
+      & {
+        width: 200px;
+      }
+    }
   }
 
   &:hover::after {

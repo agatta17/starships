@@ -60,13 +60,12 @@ export default {
     outline: 0;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 520px) {
     &__icon {
       top: 9px;
     }
 
     &__input {
-      width: 100%;
       height: 36px;
     }
   }

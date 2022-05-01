@@ -1,14 +1,12 @@
 <template>
   <div class="starships container">
-    <div class="starships__controls">
-      <Search />
-      <Pagination />
-    </div>
+    <Search />
     <ol class="starships__list" v-if="starshipsList.length">
       <StarshipCard v-for="starship in starshipsList" :key="starship.model" :starship="starship" />
     </ol>
     <Spinner v-else-if="isLoading" />
     <h1 v-else>Корабли не найдены</h1>
+    <Pagination />
   </div>
 </template>
 
@@ -37,10 +35,9 @@ export default {
 
 <style lang="scss">
 .starships {
-  &__controls {
-    display: flex;
-    justify-content: space-between;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__list {
     font-style: italic; 
