@@ -27,6 +27,10 @@ router.afterEach((to) => {
   if (to.name === 'Starship') {
     store.dispatch('fetchStarshipData', to.query.starship)
   }
+  if (to.name === 'Starships') {
+    store.commit('updateSearchText', to.query.search)
+    store.dispatch('fetchStarshipsList')
+  }
 })
 
 export default router

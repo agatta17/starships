@@ -32,9 +32,6 @@ export default {
       return this.$store.state.starships.isLoading;
     }
   },
-  async mounted() {
-    this.$store.dispatch('fetchStarshipsList')
-  }
 }
 </script>
 

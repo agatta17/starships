@@ -8,7 +8,7 @@
         2.28711 6.50439C2.28711 3.76514 4.55322 1.49902 7.29248 1.49902C10.0317 1.49902 12.2979 3.76514 12.2979 6.50439C12.2979 9.24365 
         10.0317 11.5098 7.29248 11.5098Z" fill="#3C3C43" fill-opacity="0.6"/>
     </svg>
-    <input class="search__input" type=text placeholder="Search" v-model="searchText" @change="fetchPosts" />
+    <input class="search__input" type=text placeholder="Search" v-model="searchText" @change="addUrlQuery" />
   </div>
 
 </template>
@@ -27,8 +27,11 @@ export default {
     },
   },
   methods: {
-    fetchPosts() {
-      this.$store.dispatch('fetchStarshipsList');
+    addUrlQuery() {
+      const query = this.searchText ? {search: this.searchText} : {}
+      this.$router.push({
+        query
+      })
     }
   }
 }
