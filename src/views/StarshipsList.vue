@@ -5,8 +5,8 @@
       <StarshipCard v-for="starship in starshipsList" :key="starship.model" :starship="starship" />
     </ol>
     <Spinner v-else-if="isLoading" />
-    <h1 v-else>Корабли не найдены</h1>
-    <Pagination />
+    <h1 v-else>Starships not found</h1>
+    <Pagination v-if="showPagination" />
   </div>
 </template>
 
@@ -28,6 +28,9 @@ export default {
     },
     isLoading() {
       return this.$store.state.starships.isLoading;
+    },
+    showPagination() {
+      return this.$store.getters.showPagination;
     }
   },
 }

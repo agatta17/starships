@@ -43,7 +43,6 @@ export default {
       ],
     }
   }
-
 }
 </script>
 
@@ -55,7 +54,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-size: 13px; 
   border-left: 1px solid #999;
-  color: #2c3e50;
+  color: $primary;
   text-decoration: none;
 
   &__attribute:first-of-type {

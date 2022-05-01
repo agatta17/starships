@@ -9,7 +9,13 @@ export default {
     searchText: '',
     isLoading: false,
   },
-  getters: {},
+
+  getters: {
+    showPagination(state) {
+      return state.nextPageUrl || state.previousPageUrl
+    }
+  },
+
   mutations: {
     updateStarshipsList(state, starshipsList) {
       state.starshipsList = starshipsList;
@@ -30,6 +36,7 @@ export default {
       state.searchText = searchText
     },
   },
+  
   actions: {
     async fetchStarshipsList({ state, commit }, url) {
       commit('updateIsLoading', true)

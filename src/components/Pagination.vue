@@ -12,7 +12,6 @@
       <div class="pagination__arrow pagination__arrow_right"></div>
     </a>
   </div>
-
 </template>
 
 <script>
@@ -53,7 +52,7 @@ export default {
   &__button {
     width: 32px;
     height: 32px;
-    border: 1px solid rgba(60, 60, 67, 0.3);
+    border: 1px solid $dark;
     box-sizing: border-box;
     border-radius: 4px;
     cursor: pointer;
@@ -70,8 +69,8 @@ export default {
   &__arrow {
     width: 7px;
     height: 7px;
-    border-top: 2px solid rgba(60, 60, 67, 0.3);
-    border-right: 2px solid rgba(60, 60, 67, 0.3);
+    border-top: 2px solid $dark;
+    border-right: 2px solid $dark;
 
       &_right {
         transform: rotate(45deg);

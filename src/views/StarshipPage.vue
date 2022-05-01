@@ -17,7 +17,7 @@
       </template>
     </template>
     <Spinner v-else-if="isLoading" />
-    <h1 v-else>Корабль не найден</h1>
+    <h1 v-else>Starship not found</h1>
   </div>
 </template>
 

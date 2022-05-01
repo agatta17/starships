@@ -1,5 +1,12 @@
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production'
-      ? '/starships/'
-      : '/'
-  }
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "@/styles/_variables.scss";`,
+      }
+    }
+  },
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/starships/'
+    : '/'
+}

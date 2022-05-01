@@ -5,10 +5,8 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
-  components: {}
 }
 </script>
 
@@ -19,7 +17,7 @@ body {
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: #2c3e50;
+  color: $primary;
 }
 
 .container {

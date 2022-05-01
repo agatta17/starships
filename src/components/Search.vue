@@ -10,7 +10,6 @@
     </svg>
     <input class="search__input" type=text placeholder="Search" v-model="searchText" @change="addUrlQuery" />
   </div>
-
 </template>
 
 <script>
@@ -49,7 +48,7 @@ export default {
 
   &__input {
     font-size: 17px;
-    background: rgba(60, 60, 67, 0.1);
+    background: $light;
     border-radius: 10px;
     width: 309px;
     height: 42px;
@@ -70,5 +69,4 @@ export default {
     }
   }
 }
-
 </style>
