@@ -9,6 +9,12 @@
           <span class="starship__attribute-value">{{starshipData[attribute.key]}}</span>
         </p>
       </template>
+      <template v-for="list in displayLists">
+        <p class="starship__attribute" :key="list.key" :data-tooltip="list.description" v-if="starshipData[list.key]">
+          <span class="starship__attribute-title">{{`${list.title}: `}}</span>
+          <span class="starship__attribute-value">{{starshipData[list.key]}}</span>
+        </p>
+      </template>
     </template>
     <Spinner v-else-if="isLoading" />
     <h1 v-else>Корабль не найден</h1>
@@ -94,6 +100,18 @@ export default {
           description: 'The maximum length of time that this starship can provide consumables for its entire crew without having to resupply.'
         },
       ],
+      displayLists: [
+        {
+          key: 'films',
+          title: 'Films',
+          description: 'A list of films that this starship has appeared in.',
+        },
+        {
+          key: 'pilots',
+          title: 'Pilots',
+          description: 'A list of people that this starship has been piloted by.',
+        }
+      ]
     }
   },
   computed: {
@@ -104,7 +122,6 @@ export default {
       return this.$store.state.starships.isLoading;
     }
   },
-
 }
 </script>
 

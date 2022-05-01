@@ -52,7 +52,7 @@ export default {
       commit('updateIsLoading', false)
     },
 
-    async fetchStarshipData({ commit }, url) {
+    async fetchStarshipData({ commit, dispatch }, url) {
       commit('updateIsLoading', true)
       const res = await apiFetch(
         url
@@ -61,9 +61,34 @@ export default {
         commit('updateIsLoading', false)
         return
       }
-      const updateStarshipData = await res.json()
-      commit('updateStarshipData', updateStarshipData)
+      const starshipData = await res.json()
+      const [films, pilots] = await Promise.all([
+        dispatch('fetchNamesList', starshipData.films),
+        dispatch('fetchNamesList', starshipData.pilots)
+      ])
+      commit('updateStarshipData', {
+        ...starshipData,
+        films,
+        pilots
+      })
       commit('updateIsLoading', false)
     },
+
+    async fetchNamesList(store, urlArray) {
+      let nameArray = [];
+      let name = '';
+      for (let i = 0; i < urlArray.length; i++) {
+        const res = await apiFetch(
+          urlArray[i]
+        )
+        if (!res.ok) {
+          continue
+        }
+        const data = await res.json()
+        name = data.name || data.title
+        nameArray.push(name);
+      }
+      return nameArray.join(', ');
+    }
   },
 }
