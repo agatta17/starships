@@ -1,10 +1,22 @@
 <template>
   <li>
-    <router-link :to="`/starship?starship=${starship.url}`" class="starship">
+    <router-link 
+      :to="`/starship?starship=${starship.url}`" 
+      class="starship"
+    >
       <template v-for="attribute in displayAttributes">
-        <div class="starship__attribute" :key="attribute.key" :data-tooltip="attribute.description">
-          <span class="starship__attribute-title">{{`${attribute.title}: `}}</span>
-          <span class="starship__attribute-value">{{starship[attribute.key]}}</span>
+        <div 
+          class="starship__attribute" 
+          :key="attribute.key" 
+          :data-tooltip="attribute.description"
+        >
+          <span class="starship__attribute-title">
+            {{`${attribute.title}: `}}
+          </span>
+          
+          <span class="starship__attribute-value">
+            {{starship[attribute.key]}}
+          </span>
         </div>
       </template>
     </router-link>
@@ -14,9 +26,11 @@
 <script>
 export default {
   name: 'StarshipCard',
+
   props: {
     starship: Object
   },
+  
   data() {
     return {
       displayAttributes: [

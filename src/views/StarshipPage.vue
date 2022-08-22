@@ -1,22 +1,49 @@
 <template>
   <div class="starship container">
-    <img class="starship__img" src="../assets/starship.jpeg" />
+    <img 
+      class="starship__img" 
+      src="../assets/starship.jpeg" 
+    />
+
     <template v-if="starshipData.name && !isLoading">
       <h1>{{starshipData.name}}</h1>
+
       <template v-for="attribute in displayAttributes">
-        <p class="starship__attribute" :key="attribute.key" :data-tooltip="attribute.description">
-          <span class="starship__attribute-title">{{`${attribute.title}: `}}</span>
-          <span class="starship__attribute-value">{{starshipData[attribute.key]}}</span>
+        <p 
+          class="starship__attribute" 
+          :key="attribute.key" 
+          :data-tooltip="attribute.description"
+        >
+          <span class="starship__attribute-title">
+            {{`${attribute.title}: `}}
+          </span>
+
+          <span class="starship__attribute-value">
+            {{starshipData[attribute.key]}}
+          </span>
         </p>
       </template>
+
       <template v-for="list in displayLists">
-        <p class="starship__attribute" :key="list.key" :data-tooltip="list.description" v-if="starshipData[list.key]">
-          <span class="starship__attribute-title">{{`${list.title}: `}}</span>
-          <span class="starship__attribute-value">{{starshipData[list.key]}}</span>
+        <p 
+          class="starship__attribute" 
+          :key="list.key" 
+          :data-tooltip="list.description" 
+          v-if="starshipData[list.key]"
+        >
+          <span class="starship__attribute-title">
+            {{`${list.title}: `}}
+          </span>
+
+          <span class="starship__attribute-value">
+            {{starshipData[list.key]}}
+          </span>
         </p>
       </template>
     </template>
+
     <Spinner v-else-if="isLoading" />
+
     <h1 v-else>Starship not found</h1>
   </div>
 </template>
@@ -26,9 +53,11 @@ import Spinner from '@/components/Spinner.vue';
 
 export default {
   name: 'StarshipPage',
+
   components: {
     Spinner,
   },
+
   data() {
     return {
       displayAttributes: [
@@ -100,6 +129,7 @@ export default {
           description: 'The maximum length of time that this starship can provide consumables for its entire crew without having to resupply.'
         },
       ],
+
       displayLists: [
         {
           key: 'films',
@@ -114,10 +144,12 @@ export default {
       ]
     }
   },
+
   computed: {
     starshipData() {
       return this.$store.state.starships.starshipData;
     },
+    
     isLoading() {
       return this.$store.state.starships.isLoading;
     }
